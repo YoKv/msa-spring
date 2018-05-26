@@ -7,7 +7,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>app-traditional</module>
-    <module>app-webflux</module>
+    <module>app-reactive</module>
     <module>eureka</module>
     <module>config</module>
     <module>gateway</module>
