@@ -21,3 +21,6 @@ spring:
         min-idle: 1
 server:
   port: 8800
+feign:
+  okhttp:
+    enable: true
