@@ -36,7 +36,8 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
-
+    <!--wait for reactive-->
+    <!--https://github.com/spring-cloud/spring-cloud-openfeign/pull/11-->
 
   </dependencies>
 

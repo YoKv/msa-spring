@@ -22,24 +22,30 @@ public class BizHandle {
   @Autowired
   private BizService bizService;
 
+
   public Mono<ServerResponse> start(ServerRequest request) {
+
     reactiveRedisTemplate.opsForList().rightPop("okhttp1.1" + LocalDateTime.now());
 
     return ServerResponse.ok().contentType(APPLICATION_JSON)
         .body(reactiveRedisTemplate.opsForValue().get("key"), Object.class);
   }
 
-  public void method1() {
+  public Mono<ServerResponse> method1(ServerRequest request) {
     reactiveRedisTemplate.opsForList().rightPop("httpclient1.1" + LocalDateTime.now());
 
+    return ServerResponse.ok().contentType(APPLICATION_JSON)
+        .body(reactiveRedisTemplate.opsForValue().get("key"), Object.class);
   }
 
-  public void method2() {
+  public Mono<ServerResponse> method2(ServerRequest request) {
     reactiveRedisTemplate.opsForList().rightPop("grpc" + LocalDateTime.now());
-
+    return ServerResponse.ok().contentType(APPLICATION_JSON)
+        .body(reactiveRedisTemplate.opsForValue().get("key"), Object.class);
   }
 
-  public void method3() {
-
+  public Mono<ServerResponse> method3(ServerRequest request) {
+    return ServerResponse.ok().contentType(APPLICATION_JSON)
+        .body(reactiveRedisTemplate.opsForValue().get("key"), Object.class);
   }
 }
