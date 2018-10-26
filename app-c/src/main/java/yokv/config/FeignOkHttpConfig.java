@@ -1,6 +1,7 @@
 package yokv.config;
 
 import feign.Feign;
+import feign.Logger;
 import okhttp3.ConnectionPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -33,4 +34,10 @@ public class FeignOkHttpConfig {
                 .addInterceptor(OkHttpInterceptor)
                 .build();
     }
+
+    @Bean
+    Logger.Level level() {
+        return Logger.Level.BASIC;
+    }
+
 }

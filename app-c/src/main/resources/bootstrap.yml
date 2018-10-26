@@ -10,3 +10,6 @@ server:
 feign:
   okhttp:
     enable: true
+logging:
+  level:
+    yokv.service: debug
