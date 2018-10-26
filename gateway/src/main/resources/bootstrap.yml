@@ -10,7 +10,7 @@ spring:
       - id: app-a
         uri: lb://app-a
         predicates:
-        - Path=/app-a/**
+        - Path=//method1/**
       discovery:
         locator:
           enabled: true

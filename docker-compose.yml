@@ -28,3 +28,24 @@ services:
     - "8600:8600/udp"
     command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
 
+  app-a:
+    image: yokv/app-a
+    environment:
+      - spring.cloud.consul.host=consul-server-bootstrap
+
+  app-b:
+    image: yokv/app-b
+    environment:
+    - spring.cloud.consul.host=consul-server-bootstrap
+
+  app-c:
+    image: yokv/app-c
+    environment:
+    - spring.cloud.consul.host=consul-server-bootstrap
+
+  gateway:
+    image: yokv/gateway
+    environment:
+    - spring.cloud.consul.host=consul-server-bootstrap
+    ports:
+      - 80:80
