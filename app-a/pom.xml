@@ -34,7 +34,7 @@
                 <configuration>
                     <from>
                         <image>java:8</image>
-                        <credHelper>osxkeychain</credHelper>
+                        <credHelper>pass</credHelper>
                     </from>
                 </configuration>
             </plugin>
