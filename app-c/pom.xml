@@ -34,7 +34,7 @@
                 <configuration>
                     <from>
                         <image>java:8</image>
-                        <credHelper>ecr-login</credHelper>
+                        <credHelper>osxkeychain</credHelper>
                     </from>
                 </configuration>
             </plugin>
