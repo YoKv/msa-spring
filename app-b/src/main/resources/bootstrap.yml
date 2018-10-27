@@ -5,11 +5,37 @@ spring:
     consul:
       host: dev.aiyo.space
       port: 8500
-server:
-  port: 0
+      discovery:
+        prefer-ip-address: true
+        server-list-query-tags:
+          app-c: tag1
+        tags: tag1,tag2
+  zipkin:
+    sender:
+      type: web
+    base-url: http://dev.aiyo.space:9411/
+  boot:
+    admin:
+      client:
+        url: http://dev.aiyo.space:9100/
+  sleuth:
+    sampler:
+      probability: 1.0F
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 feign:
   okhttp:
     enable: true
+  httpclient:
+    enabled: false
+  hystrix:
+    enabled: true
 logging:
   level:
     yokv.service: debug
+server:
+  port: 6061

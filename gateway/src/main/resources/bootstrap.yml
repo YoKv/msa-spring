@@ -5,6 +5,13 @@ spring:
     consul:
       host: dev.aiyo.space
       port: 8500
+      discovery:
+        prefer-ip-address: true
+        server-list-query-tags:
+          app-a: tag1
+          app-b: tag1
+          app-c: tag1
+        tags: tag1,tag2
     gateway:
       routes:
       - id: app-a
@@ -23,5 +30,22 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+  zipkin:
+    sender:
+      type: web
+    base-url: http://dev.aiyo.space:9411/
+  boot:
+    admin:
+      client:
+        url: http://dev.aiyo.space:9100/
+  sleuth:
+    sampler:
+      probability: 1.0F
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 server:
   port: 80

@@ -5,8 +5,34 @@ spring:
     consul:
       host: dev.aiyo.space
       port: 8500
-server:
-  port: 0
+      discovery:
+        prefer-ip-address: true
+        server-list-query-tags:
+          app-b: tag1
+        tags: tag1,tag2
+#      config:
+#        format: yaml              # Consul 中 Value 配置格式为 yaml
+#        prefix: configuration     # Consul 中配置文件目录为 configuration, 默认为 config
+#        default-context: app      # 去该目录下查找缺省配置,默认为 application
+#        profile-separator: ':'    # profiles配置分隔符,默认为‘,’
+#        data-key: data            # 如果指定配置格式为 yaml 或者 properties, 则需要该值作为key,默认为 data
+  zipkin:
+    sender:
+      type: web
+    base-url: http://dev.aiyo.space:9411/
+  boot:
+    admin:
+      client:
+        url: http://dev.aiyo.space:9100/
+  sleuth:
+    sampler:
+      probability: 1.0F
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 feign:
   okhttp:
     enable: true
@@ -17,3 +43,5 @@ feign:
 logging:
   level:
     yokv.service: debug
+server:
+  port: 6060

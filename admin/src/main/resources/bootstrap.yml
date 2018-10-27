@@ -7,6 +7,8 @@ spring:
     consul:
       host: dev.aiyo.space
       port: 8500
+      discovery:
+        prefer-ip-address: true
 management:
   endpoints:
     web:

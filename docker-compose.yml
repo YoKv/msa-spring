@@ -31,44 +31,50 @@ services:
   app-a:
     image: yokv/app-a
     environment:
-    - spring.cloud.consul.host=consul-server-bootstrap
     - spring.cloud.consul.discovery.hostname=app-a
+    extra_hosts:
+      - dev.aiyo.space:192.168.66.131
 
   app-b:
     image: yokv/app-b
     environment:
-    - spring.cloud.consul.host=consul-server-bootstrap
     - spring.cloud.consul.discovery.hostname=app-b
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
 
   app-c:
     image: yokv/app-c
     environment:
-    - spring.cloud.consul.host=consul-server-bootstrap
     - spring.cloud.consul.discovery.hostname=app-c
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
 
   gateway:
     image: yokv/gateway
     environment:
-    - spring.cloud.consul.host=consul-server-bootstrap
     - spring.cloud.consul.discovery.hostname=gateway
     ports:
     - 80:80
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
 
   hystrix-dashboard:
-    build: ./admin/server-hystrix-dashboard
-    image: yokv/sc-hystrix-dashboard
+    image: yokv/hystrix-dashboard
     environment:
-    - eureka.client.serviceUrl.defaultZone=http://server-eureka-peer1:8761/eureka/,http://server-eureka-peer2:8762/eureka/
+    - spring.cloud.consul.discovery.hostname=hystrix-dashboard
     ports:
     - 9090:9090
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
 
   admin:
-    build: ./admin/server-admin
-    image: yokv/sc-server-admin
+    image: yokv/admin
     environment:
-    - eureka.client.serviceUrl.defaultZone=http://server-eureka-peer1:8761/eureka/,http://server-eureka-peer2:8762/eureka/
+    - spring.cloud.consul.discovery.hostname=admin
     ports:
     - 9100:9100
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
 
   zipkin:
     image: openzipkin/zipkin
