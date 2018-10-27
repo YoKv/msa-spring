@@ -10,6 +10,8 @@
         <module>app-b</module>
         <module>app-c</module>
         <module>gateway</module>
+        <module>admin</module>
+        <module>hystrix-dashboard</module>
     </modules>
     <artifactId>msa-spring</artifactId>
     <groupId>com.github.YoKv</groupId>
@@ -26,6 +28,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <spring-admin.version>2.0.4</spring-admin.version>
     </properties>
 
     <dependencyManagement>
@@ -37,23 +40,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <!--jdk9/10兼容-->
     <dependencies>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 

@@ -3,6 +3,7 @@ package yokv.config;
 import feign.Feign;
 import feign.Logger;
 import okhttp3.ConnectionPool;
+import okhttp3.internal.connection.ConnectInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -20,10 +21,6 @@ import java.util.concurrent.TimeUnit;
 @AutoConfigureBefore(FeignAutoConfiguration.class)
 public class FeignOkHttpConfig {
 
-
-    @Autowired
-    private OkHttpInterceptor OkHttpInterceptor;
-
     @Bean
     public okhttp3.OkHttpClient okHttpClient() {
         return new okhttp3.OkHttpClient.Builder()
@@ -31,7 +28,6 @@ public class FeignOkHttpConfig {
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(120, TimeUnit.SECONDS)
                 .connectionPool(new ConnectionPool())
-                .addInterceptor(OkHttpInterceptor)
                 .build();
     }
 

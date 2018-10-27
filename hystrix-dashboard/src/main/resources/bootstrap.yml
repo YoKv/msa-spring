@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: hystrix-dashboard
+  cloud:
+    consul:
+      host: dev.aiyo.space
+      port: 8500
+server:
+  port: 9090
+turbine:
+  app-config: app-a,app-b,app-c,gateway
+  cluster-name-expression: new String("default")
+  combine-host-port: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator

@@ -3,13 +3,17 @@ spring:
     name: app-a
   cloud:
     consul:
-      host: 127.0.0.1
+      host: dev.aiyo.space
       port: 8500
 server:
   port: 0
 feign:
   okhttp:
     enable: true
+  httpclient:
+    enabled: false
+  hystrix:
+    enabled: true
 logging:
   level:
     yokv.service: debug

@@ -1,0 +1,17 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: server-admin
+  cloud:
+    consul:
+      host: dev.aiyo.space
+      port: 8500
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

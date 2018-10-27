@@ -3,7 +3,7 @@ spring:
     name: app-c
   cloud:
     consul:
-      host: 127.0.0.1
+      host: dev.aiyo.space
       port: 8500
 server:
   port: 0

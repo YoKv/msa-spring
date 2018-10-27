@@ -53,3 +53,26 @@ services:
     - spring.cloud.consul.discovery.hostname=gateway
     ports:
     - 80:80
+
+  hystrix-dashboard:
+    build: ./admin/server-hystrix-dashboard
+    image: yokv/sc-hystrix-dashboard
+    environment:
+    - eureka.client.serviceUrl.defaultZone=http://server-eureka-peer1:8761/eureka/,http://server-eureka-peer2:8762/eureka/
+    ports:
+    - 9090:9090
+
+  admin:
+    build: ./admin/server-admin
+    image: yokv/sc-server-admin
+    environment:
+    - eureka.client.serviceUrl.defaultZone=http://server-eureka-peer1:8761/eureka/,http://server-eureka-peer2:8762/eureka/
+    ports:
+    - 9100:9100
+
+  zipkin:
+    image: openzipkin/zipkin
+    environment:
+    - STORAGE_TYPE=mem
+    ports:
+    - 9411:9411
