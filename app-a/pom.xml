@@ -25,19 +25,4 @@
             <artifactId>feign-okhttp</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>0.9.13</version>
-                <configuration>
-                    <from>
-                        <image>java:8</image>
-                        <credHelper>pass</credHelper>
-                    </from>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

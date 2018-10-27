@@ -31,7 +31,7 @@ services:
   app-a:
     image: yokv/app-a
     environment:
-      - spring.cloud.consul.host=consul-server-bootstrap
+    - spring.cloud.consul.host=consul-server-bootstrap
 
   app-b:
     image: yokv/app-b
@@ -48,4 +48,4 @@ services:
     environment:
     - spring.cloud.consul.host=consul-server-bootstrap
     ports:
-      - 80:80
+    - 80:80
