@@ -32,20 +32,24 @@ services:
     image: yokv/app-a
     environment:
     - spring.cloud.consul.host=consul-server-bootstrap
+    - spring.cloud.consul.discovery.hostname=app-a
 
   app-b:
     image: yokv/app-b
     environment:
     - spring.cloud.consul.host=consul-server-bootstrap
+    - spring.cloud.consul.discovery.hostname=app-b
 
   app-c:
     image: yokv/app-c
     environment:
     - spring.cloud.consul.host=consul-server-bootstrap
+    - spring.cloud.consul.discovery.hostname=app-c
 
   gateway:
     image: yokv/gateway
     environment:
     - spring.cloud.consul.host=consul-server-bootstrap
+    - spring.cloud.consul.discovery.hostname=gateway
     ports:
     - 80:80
