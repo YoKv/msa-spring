@@ -15,6 +15,7 @@ mvn clean package docker:build
 docker-compose up -d
 ```
 
+# 监控
 ## turbine hystrix dashboard
 访问dashboard地址：
    > http://localhost:9090/hystrix
@@ -24,3 +25,8 @@ docker-compose up -d
 
 ## admin
 http://localhost:9100
+
+## micrometer prometheus grafana
+[模板](https://grafana.com/dashboards/6756)
+[jvm模板](https://grafana.com/dashboards/4701)
+

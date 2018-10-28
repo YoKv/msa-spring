@@ -1,0 +1,9 @@
+global:
+  scrape_interval:     5s
+  evaluation_interval: 5s
+scrape_configs:
+- job_name: 'consul-prometheus'
+  metrics_path: '/actuator/prometheus'
+  consul_sd_configs:
+  - server: 'dev.aiyo.space:8500'
+    services: ['app-a','app-b','app-c','gateway']

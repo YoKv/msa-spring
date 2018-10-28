@@ -71,3 +71,21 @@ services:
     - STORAGE_TYPE=mem
     ports:
     - 9411:9411
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+    - 9099:9090
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
+
+  grafana:
+    image: grafana/grafana
+    ports:
+    - 3000:3000
+    depends_on:
+    - prometheus
+    extra_hosts:
+    - dev.aiyo.space:192.168.66.131
