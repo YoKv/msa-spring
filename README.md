@@ -10,10 +10,10 @@ https://github.com/YoKv/goal/projects/10
 ```
 mvn clean package docker:build
 ```
-
-
-# todo
-admin /instances 	connect timed out
+# run
+```
+docker-compose up -d
+```
 
 ## turbine hystrix dashboard
 访问dashboard地址：
