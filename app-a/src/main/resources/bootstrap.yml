@@ -34,14 +34,7 @@ management:
       exposure:
         include: "*"
 feign:
-  okhttp:
-    enable: true
-  httpclient:
-    enabled: false
   hystrix:
     enabled: true
-logging:
-  level:
-    yokv.service: debug
 server:
   port: 6060
